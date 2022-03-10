@@ -277,12 +277,18 @@ export class MainController implements MainServiceController {
 		);
 
 		try {
-			const status = await this.sqsService.create(
+			const res = await this.sqsService.create(
 				credentials,
 				request.resourceId,
 				input,
 			);
-			return { status };
+
+			const properties = res ? this.helperService.dtoToPayload(res) : [];
+
+			return {
+				status: !!res,
+				properties,
+			};
 		} catch (err) {
 			console.log(err);
 			switch (err.name) {
@@ -345,6 +351,7 @@ export class MainController implements MainServiceController {
 
 			return {
 				status,
+				properties: [],
 			};
 		} catch (err) {
 			switch (err.name) {
@@ -367,6 +374,7 @@ export class MainController implements MainServiceController {
 				default:
 					return {
 						status: false,
+						properties: [],
 					};
 			}
 		}

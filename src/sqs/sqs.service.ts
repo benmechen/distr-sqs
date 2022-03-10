@@ -126,9 +126,13 @@ export class SqsService {
 		});
 
 		const response = await client.send(command);
+		if (!response.QueueUrl) return false;
+
 		await this.sqsRepository.persistAndFlush(sqs);
 
-		return !!response.QueueUrl;
+		return {
+			queueUrl: response.QueueUrl,
+		};
 	}
 
 	async update(
