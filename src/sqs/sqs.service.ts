@@ -35,31 +35,26 @@ export class SqsService {
 
 		return {
 			name: sqs.queueUrl,
-			arn: queueAttributes.Attributes['QueueArn'],
-			messages: queueAttributes.Attributes['ApproximateNumberOfMessages'],
+			arn: queueAttributes.Attributes.QueueArn,
+			messages: queueAttributes.Attributes.ApproximateNumberOfMessages,
 			notVisibleMessages:
-				queueAttributes.Attributes[
-					'ApproximateNumberOfMessagesNotVisible'
-				],
+				queueAttributes.Attributes
+					.ApproximateNumberOfMessagesNotVisible,
 			delayedMessages:
-				queueAttributes.Attributes[
-					'ApproximateNumberOfMessagesDelayed'
-				],
-			visibilityTimeout: queueAttributes.Attributes['VisibilityTimeout'],
-			maxMessageSize: queueAttributes.Attributes['MaximumMessageSize'],
+				queueAttributes.Attributes.ApproximateNumberOfMessagesDelayed,
+			visibilityTimeout: queueAttributes.Attributes.VisibilityTimeout,
+			maxMessageSize: queueAttributes.Attributes.MaximumMessageSize,
 			messageRetentionPeriod:
-				queueAttributes.Attributes['MessageRetentionPeriod'],
-			delay: queueAttributes.Attributes['DelaySeconds'],
+				queueAttributes.Attributes.MessageRetentionPeriod,
+			delay: queueAttributes.Attributes.DelaySeconds,
 			recievedMessageWaitTime:
-				queueAttributes.Attributes['ReceiveMessageWaitTimeSeconds'],
-			managedSseEnabled:
-				queueAttributes.Attributes['SqsManagedSseEnabled'],
+				queueAttributes.Attributes.ReceiveMessageWaitTimeSeconds,
+			managedSseEnabled: queueAttributes.Attributes.SqsManagedSseEnabled,
 			created: new Date(
-				Number(queueAttributes.Attributes['CreatedTimestamp']) * 1000,
+				Number(queueAttributes.Attributes.CreatedTimestamp) * 1000,
 			).toISOString(),
 			updated: new Date(
-				Number(queueAttributes.Attributes['LastModifiedTimestamp']) *
-					1000,
+				Number(queueAttributes.Attributes.LastModifiedTimestamp) * 1000,
 			).toISOString(),
 		};
 	}

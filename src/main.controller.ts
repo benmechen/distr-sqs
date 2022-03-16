@@ -7,7 +7,7 @@ import {
 	CreateResponse,
 	DeleteRequest,
 	DeleteResponse,
-	Field_Type,
+	Field_Type as FieldType,
 	GetRequest,
 	GetResponse,
 	Method,
@@ -47,21 +47,21 @@ export class MainController implements MainServiceController {
 						{
 							name: 'name',
 							description: 'Bucket name (globally unique)',
-							type: Field_Type.STRING,
+							type: FieldType.STRING,
 							required: true,
 							fields: {},
 						},
 						{
 							name: 'public',
 							description: 'Are the objects publically visible?',
-							type: Field_Type.BOOLEAN,
+							type: FieldType.BOOLEAN,
 							required: true,
 							fields: {},
 						},
 						{
 							name: 'location',
 							description: 'Region the bucket is hosted in',
-							type: Field_Type.STRING,
+							type: FieldType.STRING,
 							required: false,
 							fields: {},
 						},
@@ -75,7 +75,7 @@ export class MainController implements MainServiceController {
 							name: 'name',
 							description:
 								'Queue name (up to 80 alphanumeric characters, must end with .fifo if a FiFo queue)',
-							type: Field_Type.STRING,
+							type: FieldType.STRING,
 							required: true,
 							fields: {},
 						},
@@ -83,7 +83,7 @@ export class MainController implements MainServiceController {
 							name: 'fifo',
 							description:
 								'Create a FiFo queue (leave unchecked for a standard queue)',
-							type: Field_Type.BOOLEAN,
+							type: FieldType.BOOLEAN,
 							required: false,
 							defaultValue: this.helperService.value(false),
 							fields: {},
@@ -92,7 +92,7 @@ export class MainController implements MainServiceController {
 							name: 'delay',
 							description:
 								'The length of time, in seconds, for which the delivery of all messages in the queue is delayed. Valid values: An integer from 0 to 900 seconds (15 minutes). Default: 0.',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							defaultValue: this.helperService.value(0),
 							fields: {},
@@ -101,7 +101,7 @@ export class MainController implements MainServiceController {
 							name: 'maxMessageSize',
 							description:
 								'The limit of how many bytes a message can contain before Amazon SQS rejects it. Valid values: An integer from 1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144 (256 KiB).',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							defaultValue: this.helperService.value(262144),
 							fields: {},
@@ -110,7 +110,7 @@ export class MainController implements MainServiceController {
 							name: 'messageRetentionPeriod',
 							description:
 								'The length of time, in seconds, for which Amazon SQS retains a message. Valid values: An integer from 60 seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600 (4 days).',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							defaultValue: this.helperService.value(345600),
 							fields: {},
@@ -119,7 +119,7 @@ export class MainController implements MainServiceController {
 							name: 'policy',
 							description:
 								"The queue's policy. A valid Amazon Web Services policy",
-							type: Field_Type.STRUCT,
+							type: FieldType.STRUCT,
 							required: false,
 							fields: {},
 						},
@@ -127,7 +127,7 @@ export class MainController implements MainServiceController {
 							name: 'receiveMessageWaitTime',
 							description:
 								'The length of time, in seconds, for which a ReceiveMessage action waits for a message to arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							defaultValue: this.helperService.value(0),
 							fields: {},
@@ -136,7 +136,7 @@ export class MainController implements MainServiceController {
 							name: 'deadLetterTargetArn',
 							description:
 								'The Amazon Resource Name (ARN) of the dead-letter queue to which Amazon SQS moves messages after the value of maxReceiveCount is exceeded.',
-							type: Field_Type.STRING,
+							type: FieldType.STRING,
 							required: false,
 							fields: {},
 						},
@@ -144,7 +144,7 @@ export class MainController implements MainServiceController {
 							name: 'maxReceiveCount',
 							description:
 								'The number of times a message is delivered to the source queue before being moved to the dead-letter queue. When the ReceiveCount for a message exceeds the maxReceiveCount for a queue, Amazon SQS moves the message to the dead-letter-queue.',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							fields: {},
 						},
@@ -152,7 +152,7 @@ export class MainController implements MainServiceController {
 							name: 'visibilityTimeout',
 							description:
 								'The visibility timeout for the queue, in seconds. Valid values: An integer from 0 to 43,200 (12 hours). Default: 30.',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							defaultValue: this.helperService.value(30),
 							required: false,
 							fields: {},
@@ -168,7 +168,7 @@ export class MainController implements MainServiceController {
 							name: 'delay',
 							description:
 								'The length of time, in seconds, for which the delivery of all messages in the queue is delayed. Valid values: An integer from 0 to 900 seconds (15 minutes). Default: 0.',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							fields: {},
 						},
@@ -176,7 +176,7 @@ export class MainController implements MainServiceController {
 							name: 'maxMessageSize',
 							description:
 								'The limit of how many bytes a message can contain before Amazon SQS rejects it. Valid values: An integer from 1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144 (256 KiB).',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							fields: {},
 						},
@@ -184,7 +184,7 @@ export class MainController implements MainServiceController {
 							name: 'messageRetentionPeriod',
 							description:
 								'The length of time, in seconds, for which Amazon SQS retains a message. Valid values: An integer from 60 seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600 (4 days).',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							fields: {},
 						},
@@ -192,7 +192,7 @@ export class MainController implements MainServiceController {
 							name: 'policy',
 							description:
 								"The queue's policy. A valid Amazon Web Services policy",
-							type: Field_Type.STRUCT,
+							type: FieldType.STRUCT,
 							required: false,
 							fields: {},
 						},
@@ -200,7 +200,7 @@ export class MainController implements MainServiceController {
 							name: 'receiveMessageWaitTime',
 							description:
 								'The length of time, in seconds, for which a ReceiveMessage action waits for a message to arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							fields: {},
 						},
@@ -208,7 +208,7 @@ export class MainController implements MainServiceController {
 							name: 'deadLetterTargetArn',
 							description:
 								'The Amazon Resource Name (ARN) of the dead-letter queue to which Amazon SQS moves messages after the value of maxReceiveCount is exceeded.',
-							type: Field_Type.STRING,
+							type: FieldType.STRING,
 							required: false,
 							fields: {},
 						},
@@ -216,7 +216,7 @@ export class MainController implements MainServiceController {
 							name: 'maxReceiveCount',
 							description:
 								'The number of times a message is delivered to the source queue before being moved to the dead-letter queue. When the ReceiveCount for a message exceeds the maxReceiveCount for a queue, Amazon SQS moves the message to the dead-letter-queue.',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							fields: {},
 						},
@@ -224,11 +224,17 @@ export class MainController implements MainServiceController {
 							name: 'visibilityTimeout',
 							description:
 								'The visibility timeout for the queue, in seconds. Valid values: An integer from 0 to 43,200 (12 hours). Default: 30.',
-							type: Field_Type.NUMBER,
+							type: FieldType.NUMBER,
 							required: false,
 							fields: {},
 						},
 					],
+					outputs: [],
+				};
+			default:
+				return {
+					method: Method.UNRECOGNIZED,
+					inputs: [],
 					outputs: [],
 				};
 		}
@@ -303,27 +309,6 @@ export class MainController implements MainServiceController {
 					throw new RpcException({
 						code: GrpcStatus.PERMISSION_DENIED,
 						message: 'The given credentials are not valid',
-					});
-				case 'BucketAlreadyOwnedByYou':
-					throw new RpcException({
-						message:
-							'You already have a bucket with that name. Bucket names must be unique.',
-						code: GrpcStatus.ALREADY_EXISTS,
-					});
-				case 'InvalidBucketName':
-					throw new RpcException({
-						message: 'That bucket name is invalid',
-						code: GrpcStatus.FAILED_PRECONDITION,
-					});
-				case 'TooManyBuckets':
-					throw new RpcException({
-						message: 'You have too many existing S3 buckets',
-						code: GrpcStatus.OUT_OF_RANGE,
-					});
-				case 'InvalidBucketName':
-					throw new RpcException({
-						message: 'That bucket name is invalid',
-						code: GrpcStatus.FAILED_PRECONDITION,
 					});
 				default:
 					throw new RpcException({
