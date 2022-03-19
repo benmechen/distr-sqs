@@ -13,7 +13,7 @@ async function bootstrap() {
 		options: {
 			package: 'sqs',
 			protoPath: join(__dirname, '../../protos/main.proto'),
-			url: 'localhost:50053',
+			url: '0.0.0.0:50053',
 		},
 	});
 
